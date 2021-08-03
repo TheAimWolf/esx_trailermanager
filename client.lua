@@ -125,6 +125,7 @@ function OpenVehiculeMenu(oldtrailer, coords2)
 						local vehRotation = GetEntityRotation(car)
 
 						AttachVehicleOnToTrailer(car, oldtrailer, 0.0, 0.0, 0.0, GetOffsetFromEntityGivenWorldCoords(oldtrailer, vehCoords), vehRotation.x, vehRotation.y, 0.0, false)
+						SetVehicleEngineOn(car, false, true, true)
 						TriggerServerEvent('esx_jb_trailer:AddCarToTrailer', GetVehicleNumberPlateText(oldtrailer), car)
 						Citizen.Wait(10)
 					end
@@ -133,6 +134,7 @@ function OpenVehiculeMenu(oldtrailer, coords2)
 				ESX.TriggerServerCallback('esx_jb_trailer:UnlockTrailer', function(loadedCars)
 					for i, car in pairs(loadedCars) do
 						DetachEntity(car, true, false)
+						SetVehicleEngineOn(car, false, true, false)
 					end
 				end, GetVehicleNumberPlateText(oldtrailer))
 			end
