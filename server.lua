@@ -6,13 +6,13 @@ Citizen.CreateThread(function ()
     while ESX == nil do
         TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
     end
-    ESX.RegisterServerCallback('esx_jb_trailer:UnlockTrailer', function(source, cb, trailerPlate)
+    ESX.RegisterServerCallback('esx_trailermanager:UnlockTrailer', function(source, cb, trailerPlate)
         UnlockTrailer(source, cb, trailerPlate)
     end)
 end)
 
-RegisterServerEvent('esx_jb_trailer:AddCarToTrailer')
-AddEventHandler('esx_jb_trailer:AddCarToTrailer', function(trailerPlate, car)
+RegisterServerEvent('esx_trailermanager:AddCarToTrailer')
+AddEventHandler('esx_trailermanager:AddCarToTrailer', function(trailerPlate, car)
     if trailers[trailerPlate] == nil then
         trailers[trailerPlate] = {}
     end
